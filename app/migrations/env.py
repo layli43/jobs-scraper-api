@@ -7,9 +7,7 @@ from sqlmodel import SQLModel
 from alembic import context
 from app.core.config import settings
 
-# import app.models here once it exists, so its models register on
-# SQLModel.metadata before target_metadata is read below:
-# import app.models  # noqa: F401
+import app.models  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
