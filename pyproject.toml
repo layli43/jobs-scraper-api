@@ -1,0 +1,26 @@
+[project]
+name = "jobs-scraper-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "layli43", email = "layliuanyu@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.20.0",
+    "fastapi[standard]>=0.141.1",
+    "psycopg[binary]>=3.3.6",
+    "pydantic>=2.13.5",
+    "sqlmodel>=0.0.42",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
