@@ -1,5 +1,3 @@
-import logging
-
 from collections.abc import Generator
 
 from sqlmodel import create_engine, Session
