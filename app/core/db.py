@@ -1,17 +1,17 @@
-from sqlmodel import create_engine
 import logging
+
+from collections.abc import Generator
+
+from sqlmodel import create_engine, Session
 
 from app.core.config import settings
 
-logger = logging.getLogger(__name__)
+engine = create_engine(str(settings.DATABASE_URL), pool_pre_ping=True)
 
-DATABASE_URL = settings.DATABASE_URL
 
-if DATABASE_URL:
-    engine = create_engine(str(settings.DATABASE_URL), pool_pre_ping=True)
-else:
-    logger.warning("No DATABASE_URL configured, can't connect to database")
-    engine = None
+def get_session() -> Generator[Session, None, None]:
+    with Session(engine) as session:
+        yield session
 
 
 # make sure all SQLModel models are imported (app.models) before initializing DB
